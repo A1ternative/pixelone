@@ -207,10 +207,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rigidBody: {fileID: 3072609325447005085}
-  force: 9
-  minimalHeigth: -4
+  force: 16
+  minimalHeigth: -60
   isCheatMode: 1
   groundDetection: {fileID: 1558104573093360386}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0

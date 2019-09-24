@@ -286,6 +286,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3072609325447005086, guid: 232c156ddacc90a40a1b42db4c9e948e,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072609325447005056, guid: 232c156ddacc90a40a1b42db4c9e948e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 749129357}
+    - target: {fileID: 3072609325447005056, guid: 232c156ddacc90a40a1b42db4c9e948e,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 749129365}
+    - target: {fileID: 3072609325447005056, guid: 232c156ddacc90a40a1b42db4c9e948e,
+        type: 3}
+      propertyPath: force
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232c156ddacc90a40a1b42db4c9e948e, type: 3}
 --- !u!1001 &45663437
@@ -3552,6 +3572,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48cc97b215fa414a8708512c7bb8e3d, type: 3}
+--- !u!95 &749129357 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1511018259, guid: 232c156ddacc90a40a1b42db4c9e948e,
+    type: 3}
+  m_PrefabInstance: {fileID: 28000502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &749129365 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3072609325447005086, guid: 232c156ddacc90a40a1b42db4c9e948e,
+    type: 3}
+  m_PrefabInstance: {fileID: 28000502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &753806225
 PrefabInstance:
   m_ObjectHideFlags: 0
