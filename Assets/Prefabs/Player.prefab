@@ -207,11 +207,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rigidBody: {fileID: 3072609325447005085}
-  force: 16
+  force: 6
   minimalHeigth: -60
   isCheatMode: 1
   groundDetection: {fileID: 1558104573093360386}
-  direction: {x: 0, y: 0, z: 0}
+  animator: {fileID: 1511018259}
+  spriteRenderer: {fileID: 3072609325447005086}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  animator: {fileID: 0}
 --- !u!114 &944336272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9de869deb20634ea9c8d275232d774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 10
   collisionTag: Enemy
 --- !u!114 &1558104573093360386
 MonoBehaviour:

@@ -5,11 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int health;
+    public Animator animator;
     
     public void TakeHit(int damage)
     {
         health -= damage; // health = health - damage;   ,
         Debug.Log("Стало хп от урона : " + health);
+        animator.SetTrigger("isCharacterTouched");
+        animator.SetTrigger("proceedWalking");
 
         if (health <= 0)
             Destroy(gameObject); // destroy object where script installed
