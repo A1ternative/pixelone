@@ -33,4 +33,10 @@ public class EnemyPatrol : MonoBehaviour
         }
             
     }
+
+    void Start()
+    {
+        Cat cat1 = new Cat();
+        cat1.Meow();
+    }
 }
