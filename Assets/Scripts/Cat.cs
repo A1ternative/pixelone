@@ -5,31 +5,36 @@ using UnityEngine;
 class Cat 
 {
     public string name;
-    public int age;
-    public int weight;
+    private int age; // поле ещё нужно?* 
+    public int Age
+    {
+        get { return age; }
+    }
+
+    private int Weight { get; set; }
     public int height;
-    public int tailLenght;
+    public int tailLength;
     
     public Cat()
     {
         name = "Murka";
         age = 1;
-        tailLenght = 25;
+        tailLength = 25;
     }
 
-    public Cat(string name, int age, int weight, int height, int tailLenght)
+    public Cat(string name, int age, int Weight, int height, int tailLength)
     {
         this.name = name;
         this.age = age;
-        this.weight = weight;
+        this.Weight = Weight;
         this.height = height;
-        this.tailLenght = tailLenght;
+        this.tailLength = tailLength;
     }
 
 
     public void Meow()
     {
-        Debug.Log("Кошка по имени " + name + ", возрастом " + age + " лет, " + "вес " + weight + ", ростом " + height + " и длиной хвоста " + tailLenght);
+        Debug.Log("Кошка по имени " + name + ", возрастом " + Age + " лет, " + "вес " + Weight + ", ростом " + height + " и длиной хвоста " + tailLength);
     }
    
 }
