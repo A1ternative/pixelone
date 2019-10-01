@@ -5,14 +5,21 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public int coinsCount;
-     
-    private void OnTriggerEnter2D(Collider2D col)
+    #region Singleton    
+    public static PlayerInventory Instance { get; set;  }
+    #endregion
+    private void Awake()
     {
-        if (col.gameObject.CompareTag("Coin"))
-        {
-            coinsCount++;
-            Debug.Log("Количество монет: " + coinsCount); // монетки исчезают
-            Destroy(col.gameObject);
-        }
+        Instance = this;
     }
+
+    //private void OnTriggerEnter2D(Collider2D col)
+    //{
+    //    if (col.gameObject.CompareTag("Coin"))
+    //    {
+    //        coinsCount++;
+    //        Debug.Log("Количество монет: " + coinsCount); // монетки исчезают
+    //        Destroy(col.gameObject);
+    //    }
+    //}
 }

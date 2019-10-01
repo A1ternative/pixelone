@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     private bool isJumping;
-             
 
-        // Update is called once per frame
-        void FixedUpdate()
+
+     // Update is called once per frame
+    void FixedUpdate()
     {
         animator.SetBool("isGrounded", groundDetection.isGrounded);
         if (!isJumping && !groundDetection.isGrounded)
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
 
         CheckFall();
+       
     }
 
     void CheckFall()
@@ -60,5 +61,20 @@ public class Player : MonoBehaviour
         }
         if (transform.position.y < minimalHeigth && !isCheatMode)
             Destroy(gameObject);
+    }
+
+    private void CoinsCollector()
+    {
+        PlayerInventory.Instance.coinsCount++;
+        Debug.Log("Количество монет: " + PlayerInventory.Instance.coinsCount); // монетки исчезают 
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Coin"))
+        {
+            CoinsCollector();
+            Destroy(col.gameObject);
+        }
     }
 }
