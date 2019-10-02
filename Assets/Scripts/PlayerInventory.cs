@@ -11,15 +11,5 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    //private void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    if (col.gameObject.CompareTag("Coin"))
-    //    {
-    //        coinsCount++;
-    //        Debug.Log("Количество монет: " + coinsCount); // монетки исчезают
-    //        Destroy(col.gameObject);
-    //    }
-    //}
+    }    
 }
