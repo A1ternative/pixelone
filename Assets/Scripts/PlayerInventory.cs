@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int coinsCount;
+    [SerializeField]private int coinsCount;
+    public int CoinsCount
+    {
+        get { return coinsCount; }
+        set
+        {
+          //  if (coinsCount > 0)
+                coinsCount = value;
+        }
+    }
+
     #region Singleton    
     public static PlayerInventory Instance { get; set;  }
     #endregion

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundDetection : MonoBehaviour
 {
-    public bool isGrounded;
+    public bool isGrounded; //наверно лучше оставить без каких либо условий
 
     private void OnCollisionEnter2D(Collision2D col)
     {

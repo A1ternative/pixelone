@@ -4,10 +4,39 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-    public int damage = 10;
-    public string collisionTag; // tag игровых объектов с которыми мы (объект на котором размещен скрипт) будем взаимодействовать
-    public Animator animator;
-    public Health targetHealth;
+    [SerializeField] private int damage = 10;
+    public int Damage
+    {
+        get { return damage; }
+        set
+        {
+            if (damage < 101) // если дамага больше хп героя - это однозначный ваншот
+                damage = value;
+        }
+    }
+
+    [SerializeField] private string collisionTag; // tag игровых объектов с которыми мы (объект на котором размещен скрипт) будем взаимодействовать
+    public string CollisionTag
+    {
+        get { return collisionTag; }
+        set
+        {
+            if (collisionTag.Equals("Enemy") || collisionTag.Equals("Player"))
+                collisionTag = value;
+        }
+    }
+
+    [SerializeField] private Animator animator;
+    public Animator Animator
+    {
+        get { return animator; }
+        set                                 // одинаково работает и с set и закомменченным set. Пока хз какое лучше тут условие применить
+        {
+            if (animator != null)
+                animator = value;
+        }
+    }
+    private Health targetHealth; // можно целиком сделать приватным, нет необходимости его как то изменять в инспекторе (пока ситуация такого не требует)
 
     private void OnCollisionEnter2D(Collision2D col) // col - получаем ссылку на колайдер игрока, если скрипт висит на противнике и наоборот для игрока
     {

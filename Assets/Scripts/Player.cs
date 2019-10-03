@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         //}
     }
     private Vector3 direction;
-    public Animator animator;
+    [SerializeField] private Animator animator;
     public Animator Animator
     {
         get { return animator; }
@@ -133,8 +133,8 @@ public class Player : MonoBehaviour
 
     private void CoinsCollector()
     {
-        PlayerInventory.Instance.coinsCount++;
-        Debug.Log("Количество монет: " + PlayerInventory.Instance.coinsCount); // монетки исчезают 
+        PlayerInventory.Instance.CoinsCount++;
+        Debug.Log("Количество монет: " + PlayerInventory.Instance.CoinsCount); // монетки исчезают 
     }
 
     private void OnTriggerEnter2D(Collider2D col)

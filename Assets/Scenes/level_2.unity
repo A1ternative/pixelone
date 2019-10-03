@@ -4017,6 +4017,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48cc97b215fa414a8708512c7bb8e3d, type: 3}
+--- !u!50 &788962297 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2609169549044654257, guid: 496441d0ffe02ba4da5d845eb9ba55cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2609169549731175355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &791630710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9431,12 +9437,12 @@ PrefabInstance:
     - target: {fileID: 2609169549707735882, guid: 496441d0ffe02ba4da5d845eb9ba55cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.46
+      value: -24.34
       objectReference: {fileID: 0}
     - target: {fileID: 2609169549707735882, guid: 496441d0ffe02ba4da5d845eb9ba55cb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.41
+      value: -4.87
       objectReference: {fileID: 0}
     - target: {fileID: 2609169549707735882, guid: 496441d0ffe02ba4da5d845eb9ba55cb,
         type: 3}
@@ -9497,6 +9503,11 @@ PrefabInstance:
       propertyPath: isRightDirection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2609169549044654256, guid: 496441d0ffe02ba4da5d845eb9ba55cb,
+        type: 3}
+      propertyPath: rigidBody
+      value: 
+      objectReference: {fileID: 788962297}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496441d0ffe02ba4da5d845eb9ba55cb, type: 3}
 --- !u!1001 &6314467537938836581

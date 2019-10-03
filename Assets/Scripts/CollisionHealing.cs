@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class CollisionHealing : MonoBehaviour
 {
-    public int bonusHealth = 30;
+    [SerializeField] private int bonusHealth = 30;
+    public int BonusHealth
+    {
+        get { return bonusHealth; }
+        set
+        {
+            if (bonusHealth > 0)
+                bonusHealth = value;
+        }
+    }
+    
     //public string collisionTag; // tag игровых объектов с которыми мы (объект на котором размещен скрипт) будем взаимодействовать
     // теперь collisionTag не нужен
     private void OnCollisionEnter2D(Collision2D col)
