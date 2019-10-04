@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public GameObject leftBorder;
-    public GameObject rightBorder;
-    public Rigidbody2D rigidBody;
-    public GroundDetection groundDetection;
-    public bool isRightDirection;
-    /* не могу пока сообразить, какие условия можно было бы применить к Border'ам, rigidBody и groundDetection */
-
+    [SerializeField] private GameObject leftBorder;
+    [SerializeField] private GameObject rightBorder;
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private GroundDetection groundDetection;
+    [SerializeField] private bool isRightDirection;
+    
     //private Vector3 direction;
     [SerializeField] private Animator animator;
-    public Animator Animator
-    {
-        get { return animator; }
-        set                                 // одинаково работает и с set и закомменченным set. Пока хз какое лучше тут условие применить
-        {
-            if (animator != null)
-                animator = value;
-        }
-    }
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] public SpriteRenderer spriteRenderer;
 
     [SerializeField] private float speed;
     public float Speed

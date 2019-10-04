@@ -10,7 +10,7 @@ public class CollisionHealing : MonoBehaviour
         get { return bonusHealth; }
         set
         {
-            if (bonusHealth > 0)
+            if (value > 0)
                 bonusHealth = value;
         }
     }

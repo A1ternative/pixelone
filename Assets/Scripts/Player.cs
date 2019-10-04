@@ -11,78 +11,21 @@ public class Player : MonoBehaviour
         get { return speed; }
         set
         {
-            if (speed > 0.5)
+            if (speed > 0.5f)
                 speed = value;
         }
     }
     [SerializeField] private Rigidbody2D rigidBody;
-    public Rigidbody2D RigidBody
-    {
-        get { return rigidBody;  }
-        set                                 
-            /* одинаково работает и с set и закомменченным set. Пока хз какое лучше тут условие применить
-             Возможно, что то аналогичное по дефолту применяется в инспекторе (типа дефолт = null,
-             а не дефолт - ссылка, которую мы вручную перенесем в инспекторе*/
-        {
-            if (rigidBody != null)
-               rigidBody = value;
-        }
-    }
-
     [SerializeField] private float force;
-    public float Force
-    {
-        get { return force;  }
-        /*  если не правильно указать set или не не указывать сериализацию, 
-            то присваивается ноль и персонаж никуда не прыгает, 
-            только отыгрывается анимация         */
-        set
-
-        {
-            if (force > 1 && force < 30)
-                force = value;
-        }
-    }
-
     [SerializeField] private float minimalHeigth;
-    public float MinimalHeigth
-    {
-        get { return minimalHeigth; }
-        set
-        {
-            if (minimalHeigth < -44.63f)
-                minimalHeigth = value; 
-            /* в моем случае низшая платформа находится на уровне у = -44.63.
-            соответственно нет смысла иметь minimalHeigth больше этого значения */
-        }
-    }
-
-    public bool isCheatMode;
+    [SerializeField] private bool isCheatMode;
     /*  наверно нет смысла проставлять модификатор private для этого поля, 
      *  пока не вижу опасности его как либо изменять в инспекторе
       оставим как есть? :) */
     public GroundDetection groundDetection;
-    public GroundDetection GroundDetection
-    {
-        get { return groundDetection; }
-        //set                                 // одинаково работает и с set и закомменченным set. Пока хз какое лучше тут условие применить
-        //{
-        //    if (groundDetection != null)
-        //        groundDetection = value;
-        //}
-    }
     private Vector3 direction;
     [SerializeField] private Animator animator;
-    public Animator Animator
-    {
-        get { return animator; }
-        set                                 // одинаково работает и с set и закомменченным set. Пока хз какое лучше тут условие применить
-        {
-            if (animator != null)
-                animator = value;
-        }
-    }
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isJumping;
        
     // Update is called once per frame

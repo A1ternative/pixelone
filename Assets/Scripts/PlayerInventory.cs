@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField]private int coinsCount;
+    [SerializeField] private int coinsCount;
     public int CoinsCount
     {
         get { return coinsCount; }
         set
         {
-          //  if (coinsCount > 0)
+            if (value > 0)
                 coinsCount = value;
         }
     }

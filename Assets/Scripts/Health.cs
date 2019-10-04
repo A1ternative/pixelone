@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField]private int health;
-    public int HealthP     //пришлось добавить P в конце, потому что нельзя называть имя свойства именем класса. ВОзникает конфликт
-    {
-        get { return health; }
-        set
-        {
-            if (health > 0 && health < 1000)
-                health = value;
-        }
-    }
-        
+    [SerializeField] private int health;
+            
     public void TakeHit(int damage)
     {
         health -= damage; // health = health - damage;   ,
