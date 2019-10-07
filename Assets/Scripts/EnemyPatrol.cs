@@ -24,26 +24,43 @@ public class EnemyPatrol : MonoBehaviour
                 speed = value;
         }
     }
+    [SerializeField] private CollisionDamage collisionDamage;
 
 
 
     void FixedUpdate()
     {
-        if (isRightDirection && groundDetection.isGrounded)
+        //if (isRightDirection && groundDetection.isGrounded)
+        //{
+        //    rigidBody.velocity = Vector2.right * speed;
+        //    if (transform.position.x > rightBorder.transform.position.x) // transform.position.x - относится к обьекту, к которому прикреплен скрипт
+        //        isRightDirection = !isRightDirection;
+        //        spriteRenderer.flipX = true;
+        //}
+        //else if (groundDetection.isGrounded)
+        //{
+        //    rigidBody.velocity = Vector2.left * speed;
+        //    if (transform.position.x < leftBorder.transform.position.x)
+        //        isRightDirection = !isRightDirection;
+        //        spriteRenderer.flipX = false;
+        //}
+        if (groundDetection.isGrounded)
         {
-            rigidBody.velocity = Vector2.right * speed;
-            if (transform.position.x > rightBorder.transform.position.x) // transform.position.x - относится к обьекту, к которому прикреплен скрипт
-                isRightDirection = !isRightDirection;
-                spriteRenderer.flipX = true;
+            if (transform.position.x > rightBorder.transform.position.x 
+                || collisionDamage.Direction < 0)
+                isRightDirection = false;
+            else if (transform.position.x < leftBorder.transform.position.x
+                || collisionDamage.Direction > 0)
+                isRightDirection = true;
+            rigidBody.velocity = isRightDirection ? Vector2.right : Vector2.left;
+            rigidBody.velocity *= speed;
         }
-        else if (groundDetection.isGrounded)
-        {
-            rigidBody.velocity = Vector2.left * speed;
-            if (transform.position.x < leftBorder.transform.position.x)
-                isRightDirection = !isRightDirection;
-                spriteRenderer.flipX = false;
-        }
-            
+
+        if (rigidBody.velocity.x > 0)
+            spriteRenderer.flipX = true;
+        if (rigidBody.velocity.x < 0)
+            spriteRenderer.flipX = false;
+
     }
 
     void Start()

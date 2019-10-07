@@ -31,13 +31,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2609169549044654269}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0016866782, w: 0.99999857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.32999992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2609169549707735882}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2609169549044654268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -122,12 +122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBorder: {fileID: 2609169550414303914}
   rightBorder: {fileID: 2609169550146016779}
-  rigidbody: {fileID: 2609169549044654257}
+  rigidBody: {fileID: 2609169549044654257}
   groundDetection: {fileID: 8203242909967376797}
   isRightDirection: 0
   animator: {fileID: 875662530}
   spriteRenderer: {fileID: 2609169549044654268}
   speed: 1
+  collisionDamage: {fileID: 736934669}
 --- !u!114 &633390844258410433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  animator: {fileID: 875662530}
 --- !u!114 &736934669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   collisionTag: Player
+  animator: {fileID: 875662530}
 --- !u!114 &8203242909967376797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14954308, y: -0.10333371}
+  m_Offset: {x: -0.15949917, y: -0.10001522}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -193,7 +194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3499563, y: 0.87550235}
+  m_Size: {x: 1.5158863, y: 0.8821393}
   m_EdgeRadius: 0
 --- !u!95 &875662530
 Animator:
