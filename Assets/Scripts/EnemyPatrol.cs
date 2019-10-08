@@ -63,11 +63,11 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        Cat cat1 = new Cat();
-        Cat cat2 = new Cat("Barsik", 3, 5, 30, 40);
-        cat1.Meow();
-        cat2.Meow();
-    }
+    //void Start()
+    //{
+    //    Cat cat1 = new Cat();
+    //    Cat cat2 = new Cat("Barsik", 3, 5, 30, 40);
+    //    cat1.Meow();
+    //    cat2.Meow();
+    //}
 }

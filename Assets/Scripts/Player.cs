@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isJumping;
+    [SerializeField] private GameObject arrow;
        
     // Update is called once per frame
     void FixedUpdate()
@@ -60,9 +61,13 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
 
         CheckFall();
-       
+        
     }
 
+    public void Update()
+    {
+        CheckShoot();
+    }
     void CheckFall()
     {
         if (transform.position.y < minimalHeigth && isCheatMode)
@@ -72,6 +77,14 @@ public class Player : MonoBehaviour
         }
         if (transform.position.y < minimalHeigth && !isCheatMode)
             Destroy(gameObject);
+    }
+
+    void CheckShoot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(arrow);
+        }
     }
 
     private void CoinsCollector()

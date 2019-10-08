@@ -38,7 +38,7 @@ public class CollisionDamage : MonoBehaviour
     {
         if (col.gameObject.CompareTag(collisionTag))
         {
-            Debug.Log("Пересечение коллайдеров завершено");
+           // Debug.Log("Пересечение коллайдеров завершено");
             if (animator != null)
                 animator.SetTrigger("proceedWalking");
         }
