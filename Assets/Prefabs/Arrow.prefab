@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3692883379433005933}
   - component: {fileID: 5259904681343531383}
   - component: {fileID: 5627575268626480193}
+  - component: {fileID: 2265754782508470247}
+  - component: {fileID: 575762679}
+  - component: {fileID: 575762680}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -72,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d285f5599b2d4324bacefef9719b1896, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93116c8d443ecff42b5c17b5ca1c194d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +105,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &5259904681343531383
 BoxCollider2D:
@@ -145,3 +148,50 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3794853897624401687}
   rigidbody: {fileID: 3692883379433005933}
   force: 0
+--- !u!114 &2265754782508470247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470881218371172047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9de869deb20634ea9c8d275232d774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  animator: {fileID: 0}
+--- !u!95 &575762679
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470881218371172047}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4825085b6c4529a4fac733270d658ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &575762680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470881218371172047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9de869deb20634ea9c8d275232d774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  animator: {fileID: 575762679}

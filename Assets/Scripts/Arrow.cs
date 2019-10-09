@@ -12,21 +12,18 @@ public class Arrow : MonoBehaviour
         get { return force; }
         set { force = value; }
     }
+    [SerializeField] private float lifetime;
 
     public void SetImpulse(Vector2 direction, float force)
     {
         rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
+        StartCoroutine(StartLife());
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private IEnumerator StartLife()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        yield return new WaitForSeconds(lifetime);
+        Destroy(gameObject);
+        yield break;
     }
 }
