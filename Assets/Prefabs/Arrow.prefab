@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 3692883379433005933}
   - component: {fileID: 5259904681343531383}
   - component: {fileID: 5627575268626480193}
-  - component: {fileID: 2265754782508470247}
   - component: {fileID: 575762679}
-  - component: {fileID: 575762680}
+  - component: {fileID: 6050009452643639678}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -117,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.194767, y: -0.0055913925}
@@ -148,20 +147,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3794853897624401687}
   rigidbody: {fileID: 3692883379433005933}
   force: 0
---- !u!114 &2265754782508470247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470881218371172047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9de869deb20634ea9c8d275232d774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  animator: {fileID: 0}
+  lifetime: 3
+  triggerDamage: {fileID: 6050009452643639678}
 --- !u!95 &575762679
 Animator:
   serializedVersion: 3
@@ -181,7 +168,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &575762680
+--- !u!114 &6050009452643639678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,8 +177,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470881218371172047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9de869deb20634ea9c8d275232d774, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d8e956db036c92498ad8e93a4f78f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyingAfterCollision: 1
   damage: 10
-  animator: {fileID: 575762679}
+  parent: {fileID: 0}

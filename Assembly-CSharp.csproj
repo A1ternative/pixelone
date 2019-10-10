@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\TriggerDamage.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Admin/pixelone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -213,8 +213,9 @@ MonoBehaviour:
   groundDetection: {fileID: 1558104573093360386}
   animator: {fileID: 1511018259}
   spriteRenderer: {fileID: 3072609325447005086}
-  arrow: {fileID: 0}
+  arrow: {fileID: 1470881218371172047, guid: 745772681fcc20e4c90342fc08ca5699, type: 3}
   arrowSpawnPoint: {fileID: 8276631114550555188}
+  shootForce: 5
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6653957254869365852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.242, y: 0.006, z: 0}
+  m_LocalPosition: {x: 0.668, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3072609325447005087}

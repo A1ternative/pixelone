@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private bool isJumping;
     [SerializeField] private GameObject arrow;
     [SerializeField] private Transform arrowSpawnPoint;
+    [SerializeField] private int shootForce;
        
     // Update is called once per frame
     void FixedUpdate()
@@ -68,8 +69,8 @@ public class Player : MonoBehaviour
     public void Update()
     {
         CheckShoot();
-        DebugLog();
     }
+
     void CheckFall()
     {
         if (transform.position.y < minimalHeigth && isCheatMode)
@@ -86,7 +87,8 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject prefab = Instantiate(arrow, arrowSpawnPoint.position, Quaternion.identity);
-            prefab.GetComponent<Arrow>().SetImpulse(Vector2.right, force * 20);
+            prefab.GetComponent<Arrow>().SetImpulse(Vector2.right, 
+                spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
         }
     }
 
@@ -105,23 +107,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void DebugLog()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            StartCoroutine(Log());
-    }
-
-    IEnumerator Log()
-    {
-        for (int i = 0; i < 900; i++)
-        {
-            Debug.Log("Сообщение " + i);
-            yield return new WaitForSeconds(1f);
+   
             //yield return null; // такая запись позволяет выполнять цикл не каждую секунду, а каждый кадр 
-        }
-        yield return null;
-        //yield break;
-    }
+              //yield break;
+   
 }
 
 
