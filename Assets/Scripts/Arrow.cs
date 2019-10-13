@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private float lifetime;
     [SerializeField] private TriggerDamage triggerDamage;
 
+
     public void SetImpulse(Vector2 direction, float force, GameObject parent)
     {
         triggerDamage.Parent = parent; // инициализация свойства парент из скрипта триггерДамадж
@@ -22,6 +23,7 @@ public class Arrow : MonoBehaviour
         if (force < 0)
             transform.rotation = Quaternion.Euler(0, 180, 0); //отражение стрелы относительно оси Y 
         StartCoroutine(StartLife());
+        
     }
 
     private IEnumerator StartLife()
@@ -30,4 +32,6 @@ public class Arrow : MonoBehaviour
         Destroy(gameObject);
         yield break;
     }
+
+    
 }

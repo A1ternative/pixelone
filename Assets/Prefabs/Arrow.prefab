@@ -149,6 +149,8 @@ MonoBehaviour:
   force: 0
   lifetime: 3
   triggerDamage: {fileID: 6050009452643639678}
+  isReadyToShoot: 0
+  shootCooldown: 3
 --- !u!95 &575762679
 Animator:
   serializedVersion: 3
@@ -182,4 +184,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroyingAfterCollision: 1
   damage: 10
-  parent: {fileID: 0}

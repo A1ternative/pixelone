@@ -216,6 +216,8 @@ MonoBehaviour:
   arrow: {fileID: 1470881218371172047, guid: 745772681fcc20e4c90342fc08ca5699, type: 3}
   arrowSpawnPoint: {fileID: 8276631114550555188}
   shootForce: 5
+  isReadyToShoot: 1
+  shootCooldown: 3
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0

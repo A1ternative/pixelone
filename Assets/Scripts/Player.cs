@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private Transform arrowSpawnPoint;
     [SerializeField] private int shootForce;
-       
+    [SerializeField] private bool isReadyToShoot;
+    [SerializeField] private float shootCooldown;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -84,11 +86,14 @@ public class Player : MonoBehaviour
 
     void CheckShoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isReadyToShoot && groundDetection.isGrounded)
         {
             GameObject prefab = Instantiate(arrow, arrowSpawnPoint.position, Quaternion.identity);
             prefab.GetComponent<Arrow>().SetImpulse(Vector2.right, 
                 spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
+            isReadyToShoot = false;
+            StartCoroutine(StartShootCooldawn());
+            animator.SetTrigger("StartShooting");
         }
     }
 
@@ -107,10 +112,16 @@ public class Player : MonoBehaviour
         }
     }
 
-   
-            //yield return null; // такая запись позволяет выполнять цикл не каждую секунду, а каждый кадр 
-              //yield break;
-   
+    private IEnumerator StartShootCooldawn()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+        isReadyToShoot = true;
+        Debug.Log(isReadyToShoot);
+        yield break;
+    }
+    //yield return null; // такая запись позволяет выполнять цикл не каждую секунду, а каждый кадр 
+    //yield break;
+
 }
 
 
