@@ -5,7 +5,12 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health;
-            
+
+    private void Start()
+    {
+        GameManager.Instance.healthContainer.Add(gameObject, this); // нет вызовов дорогого FindObjects и это более оптимизированный подход 
+    }
+
     public void TakeHit(int damage)
     {
         health -= damage; // health = health - damage;   ,

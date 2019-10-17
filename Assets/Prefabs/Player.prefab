@@ -213,7 +213,7 @@ MonoBehaviour:
   groundDetection: {fileID: 1558104573093360386}
   animator: {fileID: 1511018259}
   spriteRenderer: {fileID: 3072609325447005086}
-  arrow: {fileID: 1470881218371172047, guid: 745772681fcc20e4c90342fc08ca5699, type: 3}
+  arrow: {fileID: 5627575268626480193, guid: 745772681fcc20e4c90342fc08ca5699, type: 3}
   arrowSpawnPoint: {fileID: 8276631114550555188}
   shootForce: 5
   isReadyToShoot: 1

@@ -19,19 +19,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float force;
     [SerializeField] private float minimalHeigth;
     [SerializeField] private bool isCheatMode;
-    /*  наверно нет смысла проставлять модификатор private для этого поля, 
-     *  пока не вижу опасности его как либо изменять в инспекторе
-      оставим как есть? :) */
     public GroundDetection groundDetection;
     private Vector3 direction;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isJumping;
-    [SerializeField] private GameObject arrow;
+    [SerializeField] private Arrow arrow;
     [SerializeField] private Transform arrowSpawnPoint;
     [SerializeField] private int shootForce;
     [SerializeField] private bool isReadyToShoot;
     [SerializeField] private float shootCooldown;
+    private List<Arrow> arrowPool;
+    [SerializeField] private int arrowCount = 3;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -68,6 +67,17 @@ public class Player : MonoBehaviour
         
     }
 
+    public void Start()
+    {
+        arrowPool = new List<Arrow>();
+        for (int i = 0; i < arrowCount; i++)
+        {
+            var arrowTemp = Instantiate(arrow, arrowSpawnPoint);
+            arrowPool.Add(arrowTemp);
+            arrowTemp.gameObject.SetActive(false);
+        }
+    }
+
     public void Update()
     {
         CheckShoot();
@@ -88,9 +98,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isReadyToShoot && groundDetection.isGrounded)
         {
-            GameObject prefab = Instantiate(arrow, arrowSpawnPoint.position, Quaternion.identity);
-            prefab.GetComponent<Arrow>().SetImpulse(Vector2.right, 
-                spriteRenderer.flipX ? -force * shootForce : force * shootForce, gameObject);
+            Arrow currentArrow = GetArrowFromPool();
+            currentArrow.SetImpulse(Vector2.right, 
+                spriteRenderer.flipX ? -force * shootForce : force * shootForce, this);
             isReadyToShoot = false;
             StartCoroutine(StartShootCooldawn());
             animator.SetTrigger("StartShooting");
@@ -121,6 +131,33 @@ public class Player : MonoBehaviour
     }
     //yield return null; // такая запись позволяет выполнять цикл не каждую секунду, а каждый кадр 
     //yield break;
+
+    private Arrow GetArrowFromPool()
+    {
+        if (arrowPool.Count > 0)
+        {
+            var arrowTemp = arrowPool[0];
+            arrowPool.Remove(arrowTemp);
+            arrowTemp.gameObject.SetActive(true);
+            arrowTemp.transform.parent = null;
+            arrowTemp.transform.position = arrowSpawnPoint.transform.position;
+            return arrowTemp;
+        }
+        return Instantiate(arrow, arrowSpawnPoint.position, Quaternion.identity);
+
+    }
+
+    public void ReturnArrowToPool(Arrow arrowTemp)
+    {
+        if (!arrowPool.Contains(arrowTemp)) // если текущей стрелы нет в пуле, то мы её добавляем в пулл
+        {
+            arrowPool.Add(arrowTemp);
+
+            arrowTemp.transform.parent = arrowSpawnPoint;
+            arrowTemp.transform.position = arrowSpawnPoint.transform.position;
+            arrowTemp.gameObject.SetActive(false);
+        }
+    }
 
 }
 

@@ -16,9 +16,9 @@ public class CollisionDamage : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D col) // col - получаем ссылку на колайдер игрока, если скрипт висит на противнике и наоборот для игрока
     {
-        health = col.gameObject.GetComponent<Health>();
-        if (health != null)
+        if (GameManager.Instance.healthContainer.ContainsKey(col.gameObject))
         {
+            var health = GameManager.Instance.healthContainer[col.gameObject];
             direction = (col.transform.position - transform.position).x;
             animator.SetFloat("Direction", Mathf.Abs(direction));
         }
@@ -32,8 +32,4 @@ public class CollisionDamage : MonoBehaviour
         direction = 0;
         animator.SetFloat("Direction", 0f);
     }
-
-   
-
-
 }
