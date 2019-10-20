@@ -14,17 +14,18 @@ public class CollisionHealing : MonoBehaviour
                 bonusHealth = value;
         }
     }
+    [SerializeField] private Animator animator;
     
     //public string collisionTag; // tag игровых объектов с которыми мы (объект на котором размещен скрипт) будем взаимодействовать
     // теперь collisionTag не нужен
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Health health = col.gameObject.GetComponent<Health>();
+        var health = GameManager.Instance.healthContainer[col.gameObject];
         
         if (health != null)
         {
             health.SetHealth(bonusHealth);
-            Destroy(gameObject);              
+            animator.SetTrigger("StartDestroy");             
         }
 
         //if (col.gameObject.CompareTag(collisionTag))

@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  collisionTag: Player
   animator: {fileID: 875662530}
 --- !u!114 &8203242909967376797
 MonoBehaviour:
@@ -183,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15949917, y: -0.10001522}
+  m_Offset: {x: -0.05930853, y: -0.046580374}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -194,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5158863, y: 0.8821393}
+  m_Size: {x: 1.7162676, y: 0.7752696}
   m_EdgeRadius: 0
 --- !u!95 &875662530
 Animator:

@@ -18,7 +18,7 @@ public class CollisionDamage : MonoBehaviour
     {
         if (GameManager.Instance.healthContainer.ContainsKey(col.gameObject))
         {
-            var health = GameManager.Instance.healthContainer[col.gameObject];
+            health = GameManager.Instance.healthContainer[col.gameObject];
             direction = (col.transform.position - transform.position).x;
             animator.SetFloat("Direction", Mathf.Abs(direction));
         }

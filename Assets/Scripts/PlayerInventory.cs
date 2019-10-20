@@ -21,5 +21,15 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (GameManager.Instance.coinContainer.ContainsKey(col.gameObject))
+        {
+            coinsCount++;
+            var coin = GameManager.Instance.coinContainer[col.gameObject];
+            coin.StartDestroy();
+        }
+    }
 }

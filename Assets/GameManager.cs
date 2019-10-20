@@ -9,11 +9,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public Dictionary<GameObject, Health> healthContainer;
+    public Dictionary<GameObject, Coin> coinContainer;
+    public Dictionary<GameObject, BuffReciever> buffRecieverContainer;
+
 
     private void Awake()
     {
         Instance = this;
         healthContainer = new Dictionary<GameObject, Health>();
+        coinContainer = new Dictionary<GameObject, Coin>();
+        buffRecieverContainer = new Dictionary<GameObject, BuffReciever>();
     }
    
     /*private void Start()

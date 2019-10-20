@@ -107,21 +107,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CoinsCollector()
-    {
-        PlayerInventory.Instance.CoinsCount++;
-        Debug.Log("Количество монет: " + PlayerInventory.Instance.CoinsCount); // монетки исчезают 
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Coin"))
-        {
-            CoinsCollector();
-            Destroy(col.gameObject);
-        }
-    }
-
     private IEnumerator StartShootCooldawn()
     {
         yield return new WaitForSeconds(shootCooldown);
@@ -158,6 +143,8 @@ public class Player : MonoBehaviour
             arrowTemp.gameObject.SetActive(false);
         }
     }
+
+  
 
 }
 
