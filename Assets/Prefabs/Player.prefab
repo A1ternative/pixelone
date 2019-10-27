@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsCount: 0
+  coinsText: {fileID: 0}
 --- !u!61 &1511018260
 BoxCollider2D:
   m_ObjectHideFlags: 0

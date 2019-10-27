@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -13,6 +12,12 @@ public class PlayerInventory : MonoBehaviour
             if (value > 0)
                 coinsCount = value;
         }
+    }
+    [SerializeField] private Text coinsText;
+
+    private void Start()
+    {
+        coinsText.text = "Количество монет: 0";
     }
 
     #region Singleton    
@@ -28,6 +33,7 @@ public class PlayerInventory : MonoBehaviour
         if (GameManager.Instance.coinContainer.ContainsKey(col.gameObject))
         {
             coinsCount++;
+            coinsText.text = "Количество монет: " + coinsCount;
             var coin = GameManager.Instance.coinContainer[col.gameObject];
             coin.StartDestroy();
         }
