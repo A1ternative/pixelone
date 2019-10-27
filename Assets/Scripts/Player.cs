@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float shootCooldown;
     private List<Arrow> arrowPool;
     [SerializeField] private int arrowCount = 3;
+    [SerializeField] private Health health;
+    public Health Health { get { return health; } }
 
     // Update is called once per frame
     void FixedUpdate()

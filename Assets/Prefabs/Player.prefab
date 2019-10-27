@@ -300,6 +300,7 @@ MonoBehaviour:
   isReadyToShoot: 1
   shootCooldown: 3
   arrowCount: 3
+  health: {fileID: 1041691156028856113}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0

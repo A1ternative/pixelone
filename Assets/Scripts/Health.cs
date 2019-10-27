@@ -6,6 +6,10 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private Animator animator;
+    public int CurrentHealth
+    {
+        get { return health; }
+    }
 
     private void Start()
     {
