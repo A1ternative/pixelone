@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour
         coinContainer = new Dictionary<GameObject, Coin>();
         buffRecieverContainer = new Dictionary<GameObject, BuffReciever>();
     }
+
+    public void OnClickPause()
+    {
+        if (Time.timeScale > 0)
+            Time.timeScale = 0;
+        else Time.timeScale = 1;
+    }
    
     /*private void Start()
     {

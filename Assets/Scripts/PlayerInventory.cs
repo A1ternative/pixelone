@@ -17,7 +17,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        coinsText.text = "Количество монет: 0";
+        coinsText.text = CoinsCount.ToString();
     }
 
     #region Singleton    
@@ -32,8 +32,8 @@ public class PlayerInventory : MonoBehaviour
     {
         if (GameManager.Instance.coinContainer.ContainsKey(col.gameObject))
         {
-            coinsCount++;
-            coinsText.text = "Количество монет: " + coinsCount;
+            CoinsCount++;
+            coinsText.text = CoinsCount.ToString();
             var coin = GameManager.Instance.coinContainer[col.gameObject];
             coin.StartDestroy();
         }
