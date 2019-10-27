@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health;
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
@@ -15,7 +16,9 @@ public class Health : MonoBehaviour
     {
         health -= damage; // health = health - damage;   ,
         //Debug.Log("Стало хп от урона : " + health);
-                
+        if (animator != null)
+            animator.SetTrigger("TakingDamage");
+
         if (health <= 0)
             Destroy(gameObject); // destroy object where script installed
         
@@ -27,8 +30,6 @@ public class Health : MonoBehaviour
         //Debug.Log("Стало хп от аптечки : " + health);
 
         if (health > 100)
-            health = 100;
-        
-
+            health = 100;     
     }
 }
