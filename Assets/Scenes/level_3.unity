@@ -869,6 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 41432049}
+  delta: 0.01
 --- !u!1001 &1016641478
 PrefabInstance:
   m_ObjectHideFlags: 0

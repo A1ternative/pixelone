@@ -4,6 +4,8 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image health;
+    [SerializeField] private float delta;
+    private float currentHealth;
     private float healthValue;
     private Player player;
 
@@ -15,11 +17,20 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        healthValue = player.Health.CurrentHealth / 100.0f;
     }
 
     
     void Update()
     {
-        health.fillAmount = player.Health.CurrentHealth / 100.0f;
+        //health.fillAmount = player.Health.CurrentHealth / 100.0f;
+        currentHealth = player.Health.CurrentHealth / 100.0f;
+        if (currentHealth > healthValue)
+            healthValue += delta;
+        if (currentHealth < healthValue)
+            healthValue -= delta;
+        if (Mathf.Abs(currentHealth - healthValue) < delta)
+            healthValue = currentHealth;
+        health.fillAmount = healthValue;
     }
 }
