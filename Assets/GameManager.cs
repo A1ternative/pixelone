@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale > 0)
             Time.timeScale = 0;
         else Time.timeScale = 1;
+
+        SceneManager.LoadScene(2);
     }
    
     /*private void Start()
