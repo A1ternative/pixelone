@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int arrowCount = 3;
     [SerializeField] private Health health;
     public Health Health { get { return health; } }
+    public Item item;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -78,6 +79,8 @@ public class Player : MonoBehaviour
             arrowPool.Add(arrowTemp);
             arrowTemp.gameObject.SetActive(false);
         }
+
+        Debug.Log(item.ID + " : " + item.ItemName + " : " + item.Description);
     }
 
     public void Update()
