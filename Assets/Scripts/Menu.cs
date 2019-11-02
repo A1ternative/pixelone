@@ -9,20 +9,10 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("Player_Name"))
-            nameField.text = PlayerPrefs.GetString("Player_Name");
-        if (PlayerPrefs.HasKey("Sound_Option"))
-            soundOption.text = PlayerPrefs.GetInt("Sound_Option", soundOption.);
-    }
-
-    public void OnClickPlay()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void OnClickExit()
-    {
-        Application.Quit();
+    //    if (PlayerPrefs.HasKey("Player_Name"))
+    //        nameField.text = PlayerPrefs.GetString("Player_Name");
+    //    if (PlayerPrefs.HasKey("Sound_Option"))
+    //        soundOption.text = PlayerPrefs.GetInt("Sound_Option", soundOption.);
     }
 
     public void OnEndEditName()
@@ -30,12 +20,14 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetString("Player_Name", nameField.text);
     }
 
-    public void OnClickSound()
+    public void OnClickPlay()
     {
-        if (PlayerPrefs.GetInt("Sound_Option", 1))
-            PlayerPrefs.SetInt("Sound_Option", 0) ;
-        else
-            PlayerPrefs.SetInt("Sound_Option", 1);
+        SceneManager.LoadScene("level_3");
+        Time.timeScale = 1;
     }
 
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
 }
