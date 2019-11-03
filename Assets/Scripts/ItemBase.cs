@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Item Database", menuName = "Databases/Items")]
 public class ItemBase : ScriptableObject
 {
-    [SerializeField] private List<Item> items;
+    [SerializeField, HideInInspector] private List<Item> items;
 
     [SerializeField] private Item currentItem;
+    private int currentIndex;
 
     public void CreateItem()
     {
@@ -16,9 +18,10 @@ public class ItemBase : ScriptableObject
         Item item = new Item();
         items.Add(item);
         currentItem = item;
+        currentIndex = items.Count - 1;
     }
 
-    public void RemoteItem()
+    public void RemoveItem()
     {
         if (items == null || currentItem == null)
             return;
@@ -27,9 +30,27 @@ public class ItemBase : ScriptableObject
         if (items.Count > 0)
             currentItem = items[0];
         else CreateItem();
+        currentIndex = 0;
+    }
+
+    public void NextItem()
+    {
+        if (currentIndex + 1 < items.Count)
+            currentIndex++;        
+    }
+
+    public void PrevItem()
+    {
+        if (currentIndex > 0)
+        {
+            currentIndex--;
+            currentItem = items[currentIndex];
+        }
+          
     }
 }
 
+[System.Serializable]
 public class Item
 { 
     // [SerializeField, HideInInspector] - если требуется сохранять какие либо обьекты сцены, но скрыть их редактирование из инспектора
