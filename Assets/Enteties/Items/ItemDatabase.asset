@@ -13,38 +13,51 @@ MonoBehaviour:
   m_Name: ItemDatabase
   m_EditorClassIdentifier: 
   items:
-  - id: 0
+  - id: 3
     itemName: "\u0417\u0435\u043B\u044C\u0435 \u0441\u0438\u043B\u044B"
-    description: "\u0414\u0430\u0435\u0442 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0434\u0436\u0443
-      \u0441\u0438\u043B\u0443"
-    type: 0
+    description: "\u0414\u0430\u0435\u0442 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0443
+      \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u0440\u044B\u0433\u0430\u0442\u044C
+      \u0432\u044B\u0448\u0435"
+    icon: {fileID: 21300000, guid: 01dc896280d15e94dba68a418dbb885f, type: 3}
+    type: 1
     value: 10
   - id: 0
     itemName: 
     description: 
+    icon: {fileID: 0}
     type: 0
     value: 0
   - id: 1
     itemName: "\u0417\u0435\u043B\u044C\u0435 \u0443\u0440\u043E\u043D\u0430 "
     description: "\u0414\u0430\u0435\u0442 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0434\u0443
       \u043F\u043E\u0432\u044B\u0448\u0435\u043D\u043D\u044B\u0439 \u0443\u0440\u043E\u043D"
+    icon: {fileID: 21300000, guid: 9d394c87e166b0040b3847d80952d8ec, type: 3}
     type: 0
     value: 5
   - id: 2
     itemName: "\u0417\u0435\u043B\u044C\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
     description: "\u041A\u0440\u0430\u0442\u043A\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E
       \u0434\u0430\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0443"
+    icon: {fileID: 21300000, guid: 29e16bd07061b144286ba39ef14e72e8, type: 3}
     type: 2
     value: 20
   - id: 0
     itemName: 
     description: 
+    icon: {fileID: 0}
+    type: 0
+    value: 0
+  - id: 0
+    itemName: 
+    description: 
+    icon: {fileID: 0}
     type: 0
     value: 0
   currentItem:
-    id: 2
-    itemName: "\u0417\u0435\u043B\u044C\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
-    description: "\u041A\u0440\u0430\u0442\u043A\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E
-      \u0434\u0430\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u0443 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0443"
-    type: 2
-    value: 20
+    id: 1
+    itemName: "\u0417\u0435\u043B\u044C\u0435 \u0443\u0440\u043E\u043D\u0430 "
+    description: "\u0414\u0430\u0435\u0442 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0434\u0443
+      \u043F\u043E\u0432\u044B\u0448\u0435\u043D\u043D\u044B\u0439 \u0443\u0440\u043E\u043D"
+    icon: {fileID: 21300000, guid: 9d394c87e166b0040b3847d80952d8ec, type: 3}
+    type: 0
+    value: 5

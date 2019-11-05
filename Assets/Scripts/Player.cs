@@ -79,8 +79,6 @@ public class Player : MonoBehaviour
             arrowPool.Add(arrowTemp);
             arrowTemp.gameObject.SetActive(false);
         }
-
-        Debug.Log(item.ID + " : " + item.ItemName + " : " + item.Description);
     }
 
     public void Update()

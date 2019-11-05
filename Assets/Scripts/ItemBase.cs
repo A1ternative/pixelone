@@ -45,8 +45,21 @@ public class ItemBase : ScriptableObject
         {
             currentIndex--;
             currentItem = items[currentIndex];
-        }
-          
+        }          
+    }
+
+    public Item GetItemOfID(int id)
+    {
+        //foreach (var item in items)
+        //{
+        //    if (item.ID == id)
+        //        return item;
+        //}
+        //return null; // если ничего не нашли возвращаем нул
+        // но можно по другому
+
+        return items.Find(t => t.ID == id);    // метод Find принимает в себя лямбда выражения
+        // по листу items перебираем t элементы, если (t.ID == id) это true, то возвращаем t элемент
     }
 }
 
@@ -69,6 +82,12 @@ public class Item
     {
         get { return description; }
     }
+    [SerializeField] private Sprite icon;
+    public Sprite Icon
+    {
+        get { return icon; }
+    }
+
     [SerializeField] private BuffType type;
     public BuffType Type
     {
