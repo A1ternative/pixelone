@@ -1256,7 +1256,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 465924527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 465924530}
+        m_MethodName: OnClickCell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &465924527
@@ -2993,12 +3004,6 @@ PrefabInstance:
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 1985250794}
-    - target: {fileID: 3072609325447005056, guid: 232c156ddacc90a40a1b42db4c9e948e,
-        type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 411614ab634664647be4619beab984b3,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232c156ddacc90a40a1b42db4c9e948e, type: 3}
 --- !u!20 &1899859991 stripped

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed = 2.5f;
+    [SerializeField] private float speed = 2.5f;    
     public float Speed
     {
         get { return speed; }
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Health health;
     public Health Health { get { return health; } }
     public Item item;
+    public BuffReciever buffReciever;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -79,7 +80,17 @@ public class Player : MonoBehaviour
             arrowPool.Add(arrowTemp);
             arrowTemp.gameObject.SetActive(false);
         }
+        buffReciever.OnBuffsChanged += TestMethod; // подписываемся на делегат
     }
+    
+    // Action делигаты всегда всегда имеют тип войд 
+    //аргумент специально пустой, такое правило для делегата
+    // иначе получим ошибку в строке buffReciever.OnBuffsChanged += TestMethod; 
+    private void TestMethod() 
+    {
+        Debug.Log("Произошел вызов делегата!");
+    }
+        
 
     public void Update()
     {
@@ -146,9 +157,6 @@ public class Player : MonoBehaviour
             arrowTemp.gameObject.SetActive(false);
         }
     }
-
-  
-
 }
 
 

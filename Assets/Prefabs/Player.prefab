@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 944336274}
   - component: {fileID: 1511018260}
   - component: {fileID: 1511018259}
+  - component: {fileID: 2077473761936436077}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -301,6 +302,14 @@ MonoBehaviour:
   shootCooldown: 3
   arrowCount: 3
   health: {fileID: 1041691156028856113}
+  item:
+    id: 0
+    itemName: 
+    description: 
+    icon: {fileID: 0}
+    type: 0
+    value: 0
+  buffReciever: {fileID: 2077473761936436077}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsCount: 0
   coinsText: {fileID: 0}
+  buffReciever: {fileID: 2077473761936436077}
 --- !u!61 &1511018260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -387,6 +397,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2077473761936436077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072609325447005083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035d9b2f64670bf47b5508782ad5753b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6653957254869365852
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class PlayerInventory : MonoBehaviour
     {
         get { return items; }
     }
+    public BuffReciever buffReciever;
 
 
     private void Start()

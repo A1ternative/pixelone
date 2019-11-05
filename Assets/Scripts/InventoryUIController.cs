@@ -13,7 +13,7 @@ public class InventoryUIController : MonoBehaviour
     // Start is called before the first frame update
     void Init()
     {
-        var cells = new Cell[cellCount];
+        cells = new Cell[cellCount];
         for (int i = 0; i < cellCount; i++)
         {
            cells[i] = Instantiate(cellPrefab, rootParent);
