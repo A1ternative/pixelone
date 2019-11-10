@@ -21,7 +21,7 @@ public class Cell : MonoBehaviour
     {
         if (item == null)
             return; // если наши кнопки не проинициализированы, то мы должны выйти из метода, ничего не делая (клики по пустым ячейкам невозможны)
-        GameManager.Instance.inventory.Items.Remove(item);
+        GameManager.Instance.inventory.Items.Remove(item); //удаление бафа из геймменеджера при нажатии на ячейку
         Buff buff = new Buff
         {
             type = item.Type,

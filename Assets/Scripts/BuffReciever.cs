@@ -6,13 +6,18 @@ using System; // библиотека что бы воспользоваться
 public class BuffReciever : MonoBehaviour
 {
     private List<Buff> buffs;
+    public List<Buff> Buffs
+    {
+        get { return buffs; }        
+    }
+
     public Action OnBuffsChanged; // делигат без параметров
     //что бы передавать параметры в делегат нужно объявить Action<int>, тогда TestMethod(int a) - будет иметь соответствуюший аргумент
 
     // Start is called before the first frame update
     private void Start()
     {
-        GameManager.Instance.buffRecieverContainer.Add(gameObject, this);
+        GameManager.Instance.buffRecieverContainer.Add(gameObject, this); //
         buffs = new List<Buff>();
     }
     

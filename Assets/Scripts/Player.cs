@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
     public Health Health { get { return health; } }
     public Item item;
     public BuffReciever buffReciever;
+    [SerializeField] private float forceBonus;
+    [SerializeField] private float damageBonus;
+    [SerializeField] private float armorBonus;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -80,15 +83,21 @@ public class Player : MonoBehaviour
             arrowPool.Add(arrowTemp);
             arrowTemp.gameObject.SetActive(false);
         }
-        buffReciever.OnBuffsChanged += TestMethod; // подписываемся на делегат
+        buffReciever.OnBuffsChanged += ApplyBuffs; // подписываемся на делегат
     }
     
     // Action делигаты всегда всегда имеют тип войд 
     //аргумент специально пустой, такое правило для делегата
     // иначе получим ошибку в строке buffReciever.OnBuffsChanged += TestMethod; 
-    private void TestMethod() 
+    private void ApplyBuffs() 
     {
-        Debug.Log("Произошел вызов делегата!");
+        var forceBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Force);
+        var armorBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Armor);
+        var damageBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Damage);
+        forceBonus = forceBuff == null ? 0 : forceBuff.additiveBonus;
+        armorBonus = forceBuff == null ? 0 : armorBuff.additiveBonus;
+        health.SetHealth((int)armorBonus);
+        damageBonus = forceBuff == null ? 0 : damageBuff.additiveBonus;
     }
         
 
