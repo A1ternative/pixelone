@@ -17,7 +17,7 @@ public class InventoryUIController : MonoBehaviour
         for (int i = 0; i < cellCount; i++)
         {
            cells[i] = Instantiate(cellPrefab, rootParent);
-            
+            cells[i].OnUpdateCell += UpdateInventory;
         } // весь этот блок инициализирует префабы ячеек инвентаря   
         cellPrefab.gameObject.SetActive(false); //если будет в цикле, то не будет выключаться при загрузке сцены
     }
@@ -26,7 +26,15 @@ public class InventoryUIController : MonoBehaviour
     {
         if (cells == null || cells.Length <= 0)
             Init();
+        UpdateInventory();
+    }
+
+    private void UpdateInventory()
+    {
         var inventory = GameManager.Instance.inventory;
+        foreach (var cell in cells)
+            cell.Init(null);
+
         for (int i = 0; i < inventory.Items.Count; i++)
         {
             if (i < cells.Length)

@@ -1,10 +1,12 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Image icon;
     private Item item;
+    public Action OnUpdateCell;
 
     private void Awake()
     {
@@ -14,7 +16,10 @@ public class Cell : MonoBehaviour
     public void Init(Item item)
     {
         this.item = item;
-        icon.sprite = item.Icon;
+        if (item == null)
+            icon.sprite = null;
+        else
+            icon.sprite = item.Icon;
     }      
     
     public void OnClickCell()
@@ -28,5 +33,7 @@ public class Cell : MonoBehaviour
             additiveBonus = item.Value
         }; // спопоб инициализации переменной без класса. Тоже самое что new Buff()
         GameManager.Instance.inventory.buffReciever.AddBuff(buff);
+        if (OnUpdateCell != null)
+            OnUpdateCell();
     }
 }

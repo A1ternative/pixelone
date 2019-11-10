@@ -35,9 +35,9 @@ public class Player : MonoBehaviour
     public Health Health { get { return health; } }
     public Item item;
     public BuffReciever buffReciever;
-    [SerializeField] private float forceBonus;
-    [SerializeField] private float damageBonus;
-    [SerializeField] private float armorBonus;
+    private float forceBonus;
+    private float damageBonus;
+    private float armorBonus;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && groundDetection.isGrounded)
         {
-            rigidBody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
             animator.SetTrigger("StartJump");
             isJumping = true;
         }
@@ -95,9 +95,9 @@ public class Player : MonoBehaviour
         var armorBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Armor);
         var damageBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Damage);
         forceBonus = forceBuff == null ? 0 : forceBuff.additiveBonus;
-        armorBonus = forceBuff == null ? 0 : armorBuff.additiveBonus;
+        armorBonus = armorBuff == null ? 0 : armorBuff.additiveBonus;
         health.SetHealth((int)armorBonus);
-        damageBonus = forceBuff == null ? 0 : damageBuff.additiveBonus;
+        damageBonus = damageBuff == null ? 0 : damageBuff.additiveBonus;
     }
         
 
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
         {
             Arrow currentArrow = GetArrowFromPool();
             currentArrow.SetImpulse(Vector2.right, 
-                spriteRenderer.flipX ? -force * shootForce : force * shootForce, this);
+                spriteRenderer.flipX ? -force * shootForce : force * shootForce, (int)damageBonus, this);
             isReadyToShoot = false;
             StartCoroutine(StartShootCooldawn());
             animator.SetTrigger("StartShooting");

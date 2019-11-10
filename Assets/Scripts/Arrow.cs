@@ -21,11 +21,12 @@ public class Arrow : MonoBehaviour, IObjectDestroyer
         player.ReturnArrowToPool(this); // this - означает передать ссылку на этот скрипт (на Arrow скрипт)
     }
 
-    public void SetImpulse(Vector2 direction, float force, Player player)
+    public void SetImpulse(Vector2 direction, float force, int damageBonus, Player player)
     {
         this.player = player;
         triggerDamage.Init(this);
         triggerDamage.Parent = player.gameObject; // инициализация свойства парент из скрипта триггерДамадж
+        triggerDamage.Damage += damageBonus;
         rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
         if (force < 0)
             transform.rotation = Quaternion.Euler(0, 180, 0); //отражение стрелы относительно оси Y 
