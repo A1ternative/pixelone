@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     private float forceBonus;
     private float damageBonus;
     private float armorBonus;
+    private UICharacterController controller;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -56,13 +57,13 @@ public class Player : MonoBehaviour
         direction.y = rigidBody.velocity.y;
         rigidBody.velocity = direction;
 
-        if (Input.GetKeyDown(KeyCode.Space) && groundDetection.isGrounded)
+        /*if (Input.GetKeyDown(KeyCode.Space) && groundDetection.isGrounded)
         {
             rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
             animator.SetTrigger("StartJump");
             isJumping = true;
-        }
-
+        } //перенесем в метод Jump;
+        */
         animator.SetFloat("Speed", Mathf.Abs(direction.x));
 
         if (direction.x > 0)
@@ -73,6 +74,17 @@ public class Player : MonoBehaviour
         CheckFall();
         
     }
+
+    public void Jump()
+    {
+        if (groundDetection.isGrounded)
+        {
+            rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
+            animator.SetTrigger("StartJump");
+            isJumping = true;
+        }
+    }
+
 
     public void Start()
     {
@@ -99,7 +111,15 @@ public class Player : MonoBehaviour
         health.SetHealth((int)armorBonus);
         damageBonus = damageBuff == null ? 0 : damageBuff.additiveBonus;
     }
-        
+    
+    public void InitUIController(UICharacterController uiController)
+    {
+        controller = uiController;
+        controller.Jump.onClick.AddListener(Jump); //за прыжки отвечает кнопка Джмп, которая лежит в контроллере, и нам нужно подписаться на событие Jump() через AddListener()
+                                                   // у юнити есть своя система событий ButtonEvents - события при нажатии на кнопку (метод типа делегата, но не делегат, нельзя использовать += для подписи)
+                                                   // AddListener(Jump) - Jump без скобок, т.к. мы передаем лишь ссылку, а не вызываем его
+    }
+
 
     public void Update()
     {

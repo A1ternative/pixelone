@@ -84,7 +84,9 @@
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\PressedButton.cs" />
     <Compile Include="Assets\Scripts\TriggerDamage.cs" />
+    <Compile Include="Assets\Scripts\UICharacterController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Admin/pixelone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
