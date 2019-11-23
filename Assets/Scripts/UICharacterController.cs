@@ -15,7 +15,7 @@ public class UICharacterController : MonoBehaviour
 
     public PressedButton Right
     {
-        get { return Right; }
+        get { return right; }
     }
 
     public Button Fire
@@ -31,6 +31,6 @@ public class UICharacterController : MonoBehaviour
 
     void Start()
     {
-        
+        Player.Instance.InitUIController(this);
     }        
 }

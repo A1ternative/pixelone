@@ -16,7 +16,8 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        //player = FindObjectOfType<Player>(); //- если без синглтона
+        player = Player.Instance;
         healthValue = player.Health.CurrentHealth / 100.0f;
     }
 

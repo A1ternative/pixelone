@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region Singleton
+    public static Player Instance { get; private set; }
+    #endregion
+
     [SerializeField] private float speed = 2.5f;    
     public float Speed
     {
@@ -39,52 +43,13 @@ public class Player : MonoBehaviour
     private float damageBonus;
     private float armorBonus;
     private UICharacterController controller;
+        
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Awake()
     {
-        animator.SetBool("isGrounded", groundDetection.isGrounded);
-        if (!isJumping && !groundDetection.isGrounded)
-            animator.SetTrigger("StartFall");
-        isJumping = isJumping && !groundDetection.isGrounded;
-        // transform.Translate(Vector2.right * Time.deltaTime * speed);
-        direction = Vector3.zero; // (0;0)
-        if (Input.GetKey(KeyCode.A))
-            direction = Vector3.left; //(-1; 0)
-        if (Input.GetKey(KeyCode.D))
-            direction = Vector3.right; // (1;0)
-        direction *= speed;
-        direction.y = rigidBody.velocity.y;
-        rigidBody.velocity = direction;
-
-        /*if (Input.GetKeyDown(KeyCode.Space) && groundDetection.isGrounded)
-        {
-            rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
-            animator.SetTrigger("StartJump");
-            isJumping = true;
-        } //перенесем в метод Jump;
-        */
-        animator.SetFloat("Speed", Mathf.Abs(direction.x));
-
-        if (direction.x > 0)
-            spriteRenderer.flipX = false;
-        if (direction.x < 0)
-            spriteRenderer.flipX = true;
-
-        CheckFall();
-        
+        Instance = this;
     }
-
-    public void Jump()
-    {
-        if (groundDetection.isGrounded)
-        {
-            rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
-            animator.SetTrigger("StartJump");
-            isJumping = true;
-        }
-    }
-
 
     public void Start()
     {
@@ -97,7 +62,68 @@ public class Player : MonoBehaviour
         }
         buffReciever.OnBuffsChanged += ApplyBuffs; // подписываемся на делегат
     }
-    
+
+    void FixedUpdate()
+    {
+        Move();
+        animator.SetFloat("Speed", Mathf.Abs(direction.x));   
+        CheckFall();        
+    }
+
+    private void Move()
+    {
+        animator.SetBool("isGrounded", groundDetection.isGrounded);
+        if (!isJumping && !groundDetection.isGrounded)
+            animator.SetTrigger("StartFall");
+        isJumping = isJumping && !groundDetection.isGrounded;
+        // transform.Translate(Vector2.right * Time.deltaTime * speed);
+        direction = Vector3.zero; // (0;0)
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.A))
+            direction = Vector3.left; //(-1; 0)
+        if (Input.GetKey(KeyCode.D))
+            direction = Vector3.right; // (1;0)
+#endif
+        if (controller.Left.IsPressed)
+            direction = Vector3.left; //(-1; 0)
+        if (controller.Right.IsPressed)
+            direction = Vector3.right; // (1;0)
+        direction *= speed;
+        direction.y = rigidBody.velocity.y;
+        rigidBody.velocity = direction;
+
+        if (direction.x > 0)
+            spriteRenderer.flipX = false;
+        if (direction.x < 0)
+            spriteRenderer.flipX = true;
+        /*if (Input.GetKeyDown(KeyCode.Space) && groundDetection.isGrounded)
+       {
+           rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
+           animator.SetTrigger("StartJump");
+           isJumping = true;
+       } //перенесем в метод Jump;
+       */
+    }
+
+    public void Jump()
+    {
+        if (groundDetection.isGrounded)
+        {
+            rigidBody.AddForce(Vector2.up * (force + forceBonus), ForceMode2D.Impulse);
+            animator.SetTrigger("StartJump");
+            isJumping = true;
+        }
+    }   
+
+    public void InitUIController(UICharacterController uiController)
+    {
+        controller = uiController;
+        controller.Jump.onClick.AddListener(Jump); //за прыжки отвечает кнопка Джмп, которая лежит в контроллере, и нам нужно подписаться на событие Jump() через AddListener()
+                                                   // у юнити есть своя система событий ButtonEvents - события при нажатии на кнопку (метод типа делегата, но не делегат, нельзя использовать += для подписи)
+                                                   // AddListener(Jump) - Jump без скобок, т.к. мы передаем лишь ссылку, а не вызываем его
+        controller.Fire.onClick.AddListener(CheckShoot);                                                
+    }
+
     // Action делигаты всегда всегда имеют тип войд 
     //аргумент специально пустой, такое правило для делегата
     // иначе получим ошибку в строке buffReciever.OnBuffsChanged += TestMethod; 
@@ -112,18 +138,16 @@ public class Player : MonoBehaviour
         damageBonus = damageBuff == null ? 0 : damageBuff.additiveBonus;
     }
     
-    public void InitUIController(UICharacterController uiController)
-    {
-        controller = uiController;
-        controller.Jump.onClick.AddListener(Jump); //за прыжки отвечает кнопка Джмп, которая лежит в контроллере, и нам нужно подписаться на событие Jump() через AddListener()
-                                                   // у юнити есть своя система событий ButtonEvents - события при нажатии на кнопку (метод типа делегата, но не делегат, нельзя использовать += для подписи)
-                                                   // AddListener(Jump) - Jump без скобок, т.к. мы передаем лишь ссылку, а не вызываем его
-    }
-
-
+    
     public void Update()
     {
-        CheckShoot();
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.OnClickPause();        
+        if (Input.GetKey(KeyCode.Space))
+            Jump();
+#endif
+
     }
 
     void CheckFall()
@@ -139,7 +163,7 @@ public class Player : MonoBehaviour
 
     void CheckShoot()
     {
-        if (Input.GetMouseButtonDown(0) && isReadyToShoot && groundDetection.isGrounded)
+        if (isReadyToShoot && groundDetection.isGrounded)
         {
             Arrow currentArrow = GetArrowFromPool();
             currentArrow.SetImpulse(Vector2.right, 
