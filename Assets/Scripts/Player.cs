@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int shootForce;
     [SerializeField] private bool isReadyToShoot;
     [SerializeField] private float shootCooldown;
+    [SerializeField] private float timerShootCooldown;
     private List<Arrow> arrowPool;
     [SerializeField] private int arrowCount = 3;
     [SerializeField] private Health health;
@@ -43,7 +44,9 @@ public class Player : MonoBehaviour
     private float damageBonus;
     private float armorBonus;
     private UICharacterController controller;
-        
+    [SerializeField] private Image fire;
+    private float TimeLeftAfterFire;
+
 
     // Update is called once per frame
     private void Awake()
@@ -147,7 +150,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
             Jump();
 #endif
-
+      
     }
 
     void CheckFall()
@@ -168,21 +171,40 @@ public class Player : MonoBehaviour
             Arrow currentArrow = GetArrowFromPool();
             currentArrow.SetImpulse(Vector2.right, 
                 spriteRenderer.flipX ? -force * shootForce : force * shootForce, (int)damageBonus, this);
-            isReadyToShoot = false;
+            isReadyToShoot = false;           
             StartCoroutine(StartShootCooldawn());
             animator.SetTrigger("StartShooting");
         }
     }
 
-    private IEnumerator StartShootCooldawn()
+    public IEnumerator StartShootCooldawn()
     {
-        yield return new WaitForSeconds(shootCooldown);
+        timerShootCooldown = shootCooldown;
+        while (timerShootCooldown > 0)
+        {
+            yield return null;
+            timerShootCooldown -= Time.deltaTime;
+            fire.fillAmount = 1.0f - timerShootCooldown / shootCooldown;
+            //yield return null;
+        }        
         isReadyToShoot = true;
-        Debug.Log(isReadyToShoot);
         yield break;
     }
     //yield return null; // такая запись позволяет выполнять цикл не каждую секунду, а каждый кадр 
     //yield break;
+
+    /*public IEnumerator StartShootCooldawn()
+    {
+        while (TimeLeftAfterFire < shootCooldown)
+        {
+            fire.fillAmount = (shootCooldown - TimeLeftAfterFire) / 100.0f / 100.0f;
+            Debug.Log("Выстрел готов через = " + (shootCooldown - TimeLeftAfterFire) / 100.0f);
+        }
+        yield return new WaitForSeconds(shootCooldown);
+        isReadyToShoot = true;
+        yield break;
+    }*/ 
+    //вид корутины, через WaitForSeconds
 
     private Arrow GetArrowFromPool()
     {

@@ -299,7 +299,7 @@ MonoBehaviour:
   arrowSpawnPoint: {fileID: 8276631114550555188}
   shootForce: 5
   isReadyToShoot: 1
-  shootCooldown: 3
+  shootCooldown: 2
   arrowCount: 3
   health: {fileID: 1041691156028856113}
   item:
@@ -310,6 +310,7 @@ MonoBehaviour:
     type: 0
     value: 0
   buffReciever: {fileID: 2077473761936436077}
+  fire: {fileID: 0}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
   m_ObjectHideFlags: 0
