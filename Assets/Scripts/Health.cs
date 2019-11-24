@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -10,6 +9,7 @@ public class Health : MonoBehaviour
     {
         get { return health; }
     }
+    public Action OnTakeHit;
 
     private void Start()
     {
@@ -20,8 +20,11 @@ public class Health : MonoBehaviour
     {
         health -= damage; // health = health - damage;   ,
         //Debug.Log("Стало хп от урона : " + health);
-        if (animator != null)
-            animator.SetTrigger("TakingDamage");
+        if (OnTakeHit != null)
+            OnTakeHit();
+       /* if (animator != null)
+            animator.SetTrigger("TakingDamage"); */ //реализация через тригер, если не испольовать Action
+            // будет перенесено в TakeHit скрипта Player
 
         if (health <= 0)
             Destroy(gameObject); // destroy object where script installed

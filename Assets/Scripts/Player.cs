@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
             arrowTemp.gameObject.SetActive(false);
         }
         buffReciever.OnBuffsChanged += ApplyBuffs; // подписываемся на делегат
+        health.OnTakeHit += TakeHit;
     }
 
     void FixedUpdate()
@@ -141,7 +142,12 @@ public class Player : MonoBehaviour
         damageBonus = damageBuff == null ? 0 : damageBuff.additiveBonus;
     }
     
-    
+    private void TakeHit()
+    {
+        //if (animator != null)
+            animator.SetTrigger("TakingDamage");
+    }
+
     public void Update()
     {
 #if UNITY_EDITOR
