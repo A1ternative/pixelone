@@ -27,7 +27,7 @@ public class CollisionDamage : MonoBehaviour
     private void SetDamage()
     {
         if (health != null)
-            health.TakeHit(damage);
+            health.TakeHit(damage, gameObject);
         health = null; //уничтожаем ссылку на объект, что бы не применять к нему эффект повторно
         direction = 0;
         animator.SetFloat("Direction", 0f);

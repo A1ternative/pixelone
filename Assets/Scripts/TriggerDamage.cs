@@ -36,7 +36,7 @@ public class TriggerDamage : MonoBehaviour
        if (GameManager.Instance.healthContainer.ContainsKey(col.gameObject))
         {
           var health = GameManager.Instance.healthContainer[col.gameObject];
-          health.TakeHit(damage);
+          health.TakeHit(damage, gameObject);
         }
         if (isDestroyingAfterCollision)
         {

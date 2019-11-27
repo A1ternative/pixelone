@@ -9,19 +9,19 @@ public class Health : MonoBehaviour
     {
         get { return health; }
     }
-    public Action OnTakeHit;
+    public Action<int, GameObject> OnTakeHit; // было без сигнатуры Action, добавляем сигнатуру
 
     private void Start()
     {
         GameManager.Instance.healthContainer.Add(gameObject, this); // нет вызовов дорогого FindObjects и это более оптимизированный подход 
     }
 
-    public void TakeHit(int damage)
+    public void TakeHit(int damage, GameObject attacker)
     {
         health -= damage; // health = health - damage;   ,
         //Debug.Log("Стало хп от урона : " + health);
         if (OnTakeHit != null)
-            OnTakeHit();
+            OnTakeHit(damage, attacker);
        /* if (animator != null)
             animator.SetTrigger("TakingDamage"); */ //реализация через тригер, если не испольовать Action
             // будет перенесено в TakeHit скрипта Player

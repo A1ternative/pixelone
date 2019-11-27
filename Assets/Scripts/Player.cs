@@ -30,22 +30,25 @@ public class Player : MonoBehaviour
     private bool isJumping;
     [SerializeField] private Arrow arrow;
     [SerializeField] private Transform arrowSpawnPoint;
-    [SerializeField] private int shootForce;
+    [SerializeField] private float shootForce;
+    [SerializeField] private float damageForce;
     [SerializeField] private bool isReadyToShoot;
     [SerializeField] private float shootCooldown;
-    [SerializeField] private float timerShootCooldown;
+    private float timerShootCooldown;
     private List<Arrow> arrowPool;
     [SerializeField] private int arrowCount = 3;
     [SerializeField] private Health health;
     public Health Health { get { return health; } }
     public Item item;
     public BuffReciever buffReciever;
+    [SerializeField] private Camera playerCamera;
     private float forceBonus;
     private float damageBonus;
     private float armorBonus;
     private UICharacterController controller;
     [SerializeField] private Image fire;
     private float TimeLeftAfterFire;
+    private bool isBlockMovement;
 
 
     // Update is called once per frame
@@ -94,7 +97,8 @@ public class Player : MonoBehaviour
             direction = Vector3.right; // (1;0)
         direction *= speed;
         direction.y = rigidBody.velocity.y;
-        rigidBody.velocity = direction;
+        if (!isBlockMovement)
+            rigidBody.velocity = direction;
 
         if (direction.x > 0)
             spriteRenderer.flipX = false;
@@ -142,11 +146,22 @@ public class Player : MonoBehaviour
         damageBonus = damageBuff == null ? 0 : damageBuff.additiveBonus;
     }
     
-    private void TakeHit()
+    private void TakeHit(int damage, GameObject attacker)
     {
         //if (animator != null)
-            animator.SetTrigger("TakingDamage");
+            animator.SetBool("GetDamage", true);
+        animator.SetTrigger("TakeHit");
+        isBlockMovement = true;
+        rigidBody.AddForce(transform.position.x < attacker.transform.position.x ? 
+            new Vector2(-damageForce, 0) : new Vector2(damageForce, 0), ForceMode2D.Impulse);
     }
+
+    public void UnblockMovement() // метод применили на ивенте первого кадра для анимации Idle Player
+    {
+        isBlockMovement = false;
+        animator.SetBool("GetDamage", false);
+    }
+
 
     public void Update()
     {
@@ -237,6 +252,12 @@ public class Player : MonoBehaviour
             arrowTemp.transform.position = arrowSpawnPoint.transform.position;
             arrowTemp.gameObject.SetActive(false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        playerCamera.transform.parent = null;   //означает что обьект передается в корень сцены и больше не привязан к игроку
+        playerCamera.enabled = true; // Unity при уничтожении обектов обнуляет компоненты. нужно их включить
     }
 }
 

@@ -3620,21 +3620,6 @@ PrefabInstance:
       propertyPath: fire
       value: 
       objectReference: {fileID: 1920925750}
-    - target: {fileID: 3072609325447005086, guid: 232c156ddacc90a40a1b42db4c9e948e,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072609325447005086, guid: 232c156ddacc90a40a1b42db4c9e948e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072609325447005086, guid: 232c156ddacc90a40a1b42db4c9e948e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232c156ddacc90a40a1b42db4c9e948e, type: 3}
 --- !u!20 &1899859991 stripped

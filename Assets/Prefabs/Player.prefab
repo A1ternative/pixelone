@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.03, y: 0, z: -10}
   m_LocalScale: {x: 0.9309253, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 9097066950743077451}
   m_Father: {fileID: 3072609325447005087}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,11 +109,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052690348263821294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000008878, y: 0, z: 0}
-  m_LocalScale: {x: 0.5498437, y: 1, z: 1}
+  m_LocalPosition: {x: 0.032226954, y: 0, z: 10}
+  m_LocalScale: {x: 0.59064215, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3072609325447005087}
-  m_RootOrder: 2
+  m_Father: {fileID: 537952594}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8651221154851926813
 SpriteRenderer:
@@ -201,7 +202,6 @@ Transform:
   m_Children:
   - {fileID: 537952594}
   - {fileID: 8276631114550555188}
-  - {fileID: 9097066950743077451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 26fe71feac2ca3741b14798a53258548, type: 3}
-  m_Color: {r: 1, g: 0.6745283, b: 0.6745283, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -298,9 +298,9 @@ MonoBehaviour:
   arrow: {fileID: 5627575268626480193, guid: 745772681fcc20e4c90342fc08ca5699, type: 3}
   arrowSpawnPoint: {fileID: 8276631114550555188}
   shootForce: 5
+  damageForce: 2
   isReadyToShoot: 1
   shootCooldown: 2
-  timerShootCooldown: 0
   arrowCount: 3
   health: {fileID: 1041691156028856113}
   item:
@@ -311,6 +311,7 @@ MonoBehaviour:
     type: 0
     value: 0
   buffReciever: {fileID: 2077473761936436077}
+  playerCamera: {fileID: 537952593}
   fire: {fileID: 0}
 --- !u!114 &1041691156028856113
 MonoBehaviour:
